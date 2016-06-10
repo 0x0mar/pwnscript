@@ -50,6 +50,10 @@ void dump_node(node_t *node, int level) {
                 SPACELEVEL;
                 printf("ID { %s }\n", node->s);
                 break;
+            case STRING:
+                SPACELEVEL;
+                printf("STRING { %s }\n", node->s);
+                break;
         }
     } while (node = node->next);
 }

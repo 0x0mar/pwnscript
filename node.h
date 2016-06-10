@@ -9,6 +9,7 @@ enum type {
     FN,                     // function (anonymous)
     TABLE,                  // array/(dictionary) (taken from lua)
     NUM,                    // number
+    STRING,                 // string
     ID,                     // identifier
 };
 

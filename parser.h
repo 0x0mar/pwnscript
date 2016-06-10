@@ -48,16 +48,19 @@ extern int yydebug;
     IDENT = 258,
     DOUBLE = 259,
     INT = 260,
-    LPAR = 261,
-    RPAR = 262,
-    LBRC = 263,
-    RBRC = 264,
-    LSQU = 265,
-    RSQU = 266,
-    DOT = 267,
-    COM = 268,
-    TFN = 269,
-    EOL = 270
+    TSTRING = 261,
+    LPAR = 262,
+    RPAR = 263,
+    LBRC = 264,
+    RBRC = 265,
+    LSQU = 266,
+    RSQU = 267,
+    DOT = 268,
+    COM = 269,
+    TFN = 270,
+    EOL = 271,
+    SQUOTE = 272,
+    DQUOTE = 273
   };
 #endif
 
@@ -66,13 +69,13 @@ extern int yydebug;
 
 union YYSTYPE
 {
-#line 14 "parser.y" /* yacc.c:1909  */
+#line 15 "parser.y" /* yacc.c:1909  */
 
     node_t *node;
     char *string;
     int token;
 
-#line 76 "parser.h" /* yacc.c:1909  */
+#line 79 "parser.h" /* yacc.c:1909  */
 };
 
 typedef union YYSTYPE YYSTYPE;
