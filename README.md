@@ -6,7 +6,8 @@ a scripting language designed specifically for security analysis and capture the
 * Lightweight and embeddable (like Lua)
 * Fast
 * Easy to integrate with C stuff - needed for binary exploit type stuff
-* Out of the box support for analysis (image/video manipulation, etc) * Out of the box support for assembly/disassembly
+* Out of the box support for analysis (image/video manipulation, etc)
+* Out of the box support for assembly/disassembly
 * Out of the box support for networking stuff
 * Out of the box support for crypto
 * Out of the box support for gdb
