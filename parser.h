@@ -56,7 +56,8 @@ extern int yydebug;
     RSQU = 266,
     DOT = 267,
     COM = 268,
-    TFN = 269
+    TFN = 269,
+    EOL = 270
   };
 #endif
 
@@ -71,7 +72,7 @@ union YYSTYPE
     char *string;
     int token;
 
-#line 75 "parser.h" /* yacc.c:1909  */
+#line 76 "parser.h" /* yacc.c:1909  */
 };
 
 typedef union YYSTYPE YYSTYPE;

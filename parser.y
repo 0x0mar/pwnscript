@@ -18,7 +18,7 @@ void yyerror(const char *s) {
 }
 
 %token <string> IDENT DOUBLE INT
-%token <token> LPAR RPAR LBRC RBRC LSQU RSQU DOT COM TFN
+%token <token> LPAR RPAR LBRC RBRC LSQU RSQU DOT COM TFN EOL
 
 %start program
 
@@ -30,8 +30,8 @@ program: stmts                      {prog = $<node>1;}
 stmt: fn | fncall | ident | num
     ;
 
-stmts: stmt                         {$<node>$ = node_fn(NULL, $<node>1);}
-     | stmts stmt                   {node_add($<node>1->block, $<node>2);}
+stmts: stmt EOL                     {$<node>$ = node_fn(NULL, $<node>1);}
+     | stmts stmt EOL               {node_add($<node>1->block, $<node>2);}
      ;
 
 stmt_list: stmt                     {$<node>$ = node_fn(NULL, $<node>1);}

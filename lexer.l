@@ -10,7 +10,8 @@
 
 %%
 
-[ \t\n]                           ; // ignore whitespace
+\n                      return TOKEN(EOL);
+[ \t]                                    ; // ignore whitespace
 "fn"                    return TOKEN(TFN);
 [\@a-zA-Z_][a-zA-Z0-9_]*          SAVE_TOKEN; return IDENT;
 [\!\=\+\-\|\/\#\$\%\^\&\*]+       SAVE_TOKEN; return IDENT;
