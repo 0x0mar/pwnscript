@@ -31,13 +31,12 @@ stmt: fn | fncall | ident | num
     ;
 
 stmts: stmt                         {$<node>$ = node_fn(NULL, $<node>1);}
-     | stmts stmt                   {node_add($<node>1, $<node>2);}
-     | // empty                     {$<node>$ = node_fn(NULL, NULL);}
+     | stmts stmt                   {node_add($<node>1->block, $<node>2);}
      ;
 
 stmt_list: stmt                     {$<node>$ = node_fn(NULL, $<node>1);}
-         | stmt_list COM stmt       {node_add($<node>1, $<node>2);}
-         | // empty
+         | stmt_list COM stmt       {node_add($<node>1->block, $<node>3);}
+         | // empty                 {$<node>$ = node_fn(NULL, NULL);}
          ;
 
 ident: IDENT                        {$<node>$ = node_atom(ID,  $1);}

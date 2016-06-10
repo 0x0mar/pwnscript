@@ -22,6 +22,10 @@ typedef struct node_t {
             struct node_t *callers;    // linked list of nodes on left side
             struct node_t *callees;    // linked list of nodes on right side
         };
+        struct {
+            struct node_t *args;       // linked list of argument nodesj
+            struct node_t *block;      // linked list of block
+        };
     };
 
     struct node_t *next; // linked list

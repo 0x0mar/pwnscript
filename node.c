@@ -16,7 +16,8 @@ node_t *node_call(node_t *callers, node_t *callees) {
 
 node_t *node_fn(node_t *args, node_t *block) {
     node_t *r = new(FN);
-    r->nodes = block;
+    r->args = args;
+    r->block = block;
     return r;
 }
 
