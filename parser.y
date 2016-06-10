@@ -25,7 +25,6 @@ void yyerror(const char *s) {
 %%
 
 program: stmts                      {prog = $<node>1;}
-       | // empty
        ;
 
 stmt: fn | fncall | ident | num
@@ -33,6 +32,7 @@ stmt: fn | fncall | ident | num
 
 stmts: stmt                         {$<node>$ = node_fn(NULL, $<node>1);}
      | stmts stmt                   {node_add($<node>1, $<node>2);}
+     | // empty                     {$<node>$ = node_fn(NULL, NULL);}
      ;
 
 stmt_list: stmt                     {$<node>$ = node_fn(NULL, $<node>1);}
@@ -49,7 +49,7 @@ num: INT                            {$<node>$ = node_atom(NUM, $1);}
 
 
 fn: TFN LPAR stmt_list RPAR
-  LBRC RBRC                         {$<node>$ = node_fn($<node>3, NULL);}
+  LBRC stmts RBRC                         {$<node>$ = node_fn($<node>3, $<node>6);}
   ;
 
 fncall: ident LPAR stmt_list RPAR   {$<node>$ = node_call($<node>1, $<node>3);}
