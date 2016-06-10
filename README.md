@@ -1,6 +1,45 @@
 # pwnscript
 a scripting language designed specifically for security analysis and capture the flag competitions
 
+# What's currently implemented
+* Tokenizer
+* Basic parser
+
+## Build the project
+* You need to install `flex`, `bison`, a C compiler, and `make`
+* Run `make`
+* `./pwn`
+* Enter your program. For instance:
+
+    + (1,2)
+
+* Hit `Ctrl-D`
+* See the glorious AST dump.
+
+```
+FN {
+   ARGS {
+   }
+   BLOCK {
+      FNCALL {
+         CALLERS {
+            ID { + }
+         }
+         CALLEES {
+            FN {
+               ARGS {
+               }
+               BLOCK {
+                  NUM { 1 }
+                  NUM { 2 }
+               }
+            }
+         }
+      }
+   }
+}
+```
+
 # Goals
 
 * Lightweight and embeddable (like Lua)
@@ -18,10 +57,6 @@ a scripting language designed specifically for security analysis and capture the
 * Syntax is mostly a ripoff of Ruby, Python, Lua and JavaScript. (go ahead and add more examples below)
 * Pointers with pointer math (somehow mark as unsafe, but this is definitely needed for security stuff)
 * Compiled. Because interpreted languages are too dependent.
-
-# Build the project
-* You need to install `flex`, `bison`, a C compiler, and `make`
-* Run `make`
 
 # (possible) Examples
 The following are some examples of what the language could possibly look like. (add more examples if you want some specific feature)
