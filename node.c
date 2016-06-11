@@ -37,3 +37,19 @@ void node_add(node_t *nodes, node_t *n) {
     GOTO_END(nodes);
     nodes->next = n;
 }
+
+void node_free(node_t *n) {
+    if(!n) return;
+    switch(n->t) { // free child nodes
+	case FNCALL:
+	    node_free(n->callers);
+	    node_free(n->callees);
+	    break;
+	case FN:
+	    node_free(n->args);
+	    node_free(n->block);
+	    break;
+    }
+    free(n);
+    node_free(n->next);
+}

@@ -4,7 +4,7 @@
 extern node_t *prog;
 extern int yyparse();
 
-void dump_node(node_t *node, int level) {
+void node_dump(node_t *node, int level) {
     if(!node) return;
     do {
 #define SPACELEVEL for(i = 0; i < level * 3; i++) putchar(' ');
@@ -15,12 +15,12 @@ void dump_node(node_t *node, int level) {
                 puts("FNCALL {");
                 SPACELEVEL;
                 puts("   CALLERS {");
-                dump_node(node->callers, level + 2);
+                node_dump(node->callers, level + 2);
                 SPACELEVEL;
                 puts("   }");
                 SPACELEVEL;
                 puts("   CALLEES {");
-                dump_node(node->callees, level + 2);
+                node_dump(node->callees, level + 2);
                 SPACELEVEL;
                 puts("   }");
                 SPACELEVEL;
@@ -31,12 +31,12 @@ void dump_node(node_t *node, int level) {
                 puts("FN {");
                 SPACELEVEL;
                 puts("   ARGS {");
-                dump_node(node->args, level + 2);
+                node_dump(node->args, level + 2);
                 SPACELEVEL;
                 puts("   }");
                 SPACELEVEL;
                 puts("   BLOCK {");
-                dump_node(node->block, level + 2);
+                node_dump(node->block, level + 2);
                 SPACELEVEL;
                 puts("   }");
                 SPACELEVEL;
@@ -59,7 +59,9 @@ void dump_node(node_t *node, int level) {
 }
 
 int main() {
-    if(yyparse() == 0)
-        dump_node(prog, 0);
+    if(yyparse() == 0) {
+        node_dump(prog, 0);
+    }
+    node_free(prog);
     return 0;
 }

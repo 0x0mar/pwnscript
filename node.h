@@ -37,5 +37,6 @@ node_t *node_fn(node_t *args, node_t *block);
 node_t *node_table(node_t *nodes);
 node_t *node_atom(enum type t, char *val); // create a number or ident
 void node_add(node_t *nodes, node_t *n);
+void node_free(node_t *n);
 
 #endif // NODE_H
