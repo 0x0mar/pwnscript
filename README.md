@@ -11,7 +11,9 @@ a scripting language designed specifically for security analysis and capture the
 * `./pwn`
 * Enter your program. For instance:
 
-    + (1,2)
+```
++ (1,2)
+```
 
 * Hit `Ctrl-D`
 * See the glorious AST dump.
